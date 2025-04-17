@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dental Care Appointment Booking</title>
+  <link rel="stylesheet" href="booking_form.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class="header">
+          <h1>Book Your Dental Appointment</h1>
+          <p>Schedule your visit with our expert dental team</p>
+          
+          <div class="business-hours">
+            <h3>Business Hours</h3>
+            <div class="hours-grid">
+              <div class="hour-item">
+                <span>Monday - Friday:</span>
+                <span>8:00 AM - 7:00 PM</span>
+              </div>
+              <div class="hour-item">
+                <span>Saturday:</span>
+                <span>9:00 AM - 4:00 PM</span>
+              </div>
+              <div class="hour-item">
+                <span>Sunday:</span>
+                <span>Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-container">
+          <div class="progress-bar">
+            <div class="progress-step active" id="step1-indicator">1</div>
+            <div class="progress-step" id="step2-indicator">2</div>
+            <div class="progress-step" id="step3-indicator">3</div>
+            <div class="progress-step" id="step4-indicator">4</div>
+          </div>
+          
+          <form id="bookingForm">
+            <!-- Step 1: Service Selection -->
+            <div class="step active" id="step1">
+              <h2>Select Treatment</h2>
+              <p>Choose the dental service you need</p>
+              
+              <div class="service-dropdown">
+                <label for="service-select" class="service-category">Treatment Type:</label>
+                <select id="service-select" class="service-select" required>
+                  <option value="">-- Select a Treatment --</option>
+                  
+                   <!-- Add Consultation as the first option -->
+                    <option value="general-consultation">General Consultation</option>
+                  <optgroup label="General Dentistry" class="service-option-group">
+                    <option value="dental-cleaning">Dental Cleanings</option>
+                    <option value="periodontal-treatment">Periodontal Treatment</option>
+                    <option value="comprehensive-exam">Comprehensive Exams</option>
+                    <option value="dental-filling">Dental Fillings</option>
+                    <option value="crowns-bridges">Dental Crowns and Bridges</option>
+                    <option value="root-canal">Root Canals</option>
+                    <option value="dentures">Dentures</option>
+                    <option value="oral-cancer-screening">Oral Cancer Screenings</option>
+                    <option value="sealants">Sealants</option>
+                    <option value="topical-fluoride">Topical Fluoride</option>
+                    <option value="emergency-dentistry">Emergency Dentistry</option>
+                  </optgroup>
+                  
+                  <optgroup label="Cosmetic Care" class="service-option-group">
+                    <option value="clear-braces">Clear Braces</option>
+                    <option value="teeth-whitening">Teeth Whitening</option>
+                    <option value="smile-makeover">Smile Makeovers</option>
+                    <option value="dental-bonding">Dental Bonding</option>
+                    <option value="porcelain-veneers">Porcelain Veneers</option>
+                    <option value="invisalign">Invisalign</option>
+                  </optgroup>
+                  
+                  <optgroup label="Surgical Treatments" class="service-option-group">
+                    <option value="tooth-extraction">Tooth Extractions</option>
+                    <option value="wisdom-teeth">Wisdom Teeth Removal</option>
+                    <option value="dental-implants">Dental Implants</option>
+                    <option value="bone-grafting">Bone Grafting</option>
+                    <option value="gum-surgery">Gum Surgery</option>
+                    <option value="soft-tissue-procedures">Soft Tissue Procedures</option>
+                  </optgroup>
+                </select>
+              </div>
+              
+              <div class="btn-container">
+                <button type="button" class="btn btn-next" id="toStep2">Continue</button>
+              </div>
+            </div>
+            
+            <!-- Step 2: Date Selection -->
+            <div class="step" id="step2">
+              <h2>Select Date</h2>
+              <p>Choose your preferred appointment date</p>
+              
+              <div class="calendar-container">
+                <div class="calendar-header">
+                  <div class="calendar-title" id="calendar-month">April 2025</div>
+                  <div class="calendar-nav">
+                    <button type="button" class="calendar-nav-btn" id="prev-month">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="calendar-nav-btn" id="next-month">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="calendar-weekdays">
+                  <div>Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div>Sat</div>
+                </div>
+                <div class="calendar-days" id="calendar-days">
+                  <!-- Days will be populated dynamically -->
+                </div>
+              </div>
+              
+              <div class="btn-container">
+                <button type="button" class="btn btn-prev" id="backToStep1">Back</button>
+                <button type="button" class="btn btn-next" id="toStep3">Continue</button>
+              </div>
+            </div>
+            
+            <!-- Step 3: Time Selection -->
+            <div class="step" id="step3">
+              <h2>Select Time</h2>
+              <p>Choose an available time slot</p>
+              
+              <div class="time-container" id="timeContainer">
+                <!-- Time options will be populated dynamically -->
+              </div>
+              
+              <div class="btn-container">
+                <button type="button" class="btn btn-prev" id="backToStep2">Back</button>
+                <button type="button" class="btn btn-next" id="toStep4">Continue</button>
+              </div>
+            </div>
+            
+            <!-- Step 4: Personal Information -->
+            <div class="step" id="step4">
+              <h2>Your Information</h2>
+              <p>Fill in your contact details</p>
+              
+              <div class="form-group">
+                <label for="name">Full Name*</label>
+                <input type="text" id="name" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address*</label>
+                <input type="email" id="email" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number*</label>
+                <input type="tel" id="phone" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="notes">Additional Notes (Optional)</label>
+                <textarea id="notes" class="form-control" rows="3"></textarea>
+              </div>
+              
+              <div class="btn-container">
+                <button type="button" class="btn btn-prev" id="backToStep3">Back</button>
+                <button type="submit" class="btn btn-submit">Confirm Booking</button>
+              </div>
+            </div>
+          </form>
+          
+          <!-- Confirmation Screen -->
+          <div class="confirmation" id="confirmation">
+            <div class="confirmation-icon"><i class="fas fa-check-circle"></i></div>
+            <h2>Booking Confirmed!</h2>
+            <p>Thank you for booking your appointment with our dental practice.</p>
+            <p>A confirmation email has been sent to your inbox.</p>
+            
+            <div class="confirmation-details">
+              <h3>Appointment Details</h3>
+              <div class="detail-item">
+                <span class="detail-label">Service:</span>
+                <span id="conf-service"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Date:</span>
+                <span id="conf-date"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Time:</span>
+                <span id="conf-time"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Name:</span>
+                <span id="conf-name"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Email:</span>
+                <span id="conf-email"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Phone:</span>
+                <span id="conf-phone"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <script src="booking_form.js"></script>
+  </body>
+  </html>
